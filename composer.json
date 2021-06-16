@@ -1,0 +1,26 @@
+{
+  "name": "vtos/payman",
+  "description": "",
+  "authors": [
+    {
+      "name": "Vitaly Potenko",
+      "email": "potenkov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Payman\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Unit\\Payman\\": "tests/Unit/Payman"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.4"
+  }
+}
