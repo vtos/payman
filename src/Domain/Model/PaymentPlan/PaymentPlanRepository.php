@@ -14,22 +14,7 @@ declare(strict_types=1);
 
 namespace Payman\Domain\Model\PaymentPlan;
 
-use InvalidArgumentException;
-
-final class PaymentPlan
+interface PaymentPlanRepository
 {
-    private string $name;
-
-    private PaymentPlanType $type;
-
-    public function __construct(string $name, PaymentPlanType $type)
-    {
-        if (empty(trim($name)))
-        {
-            throw new InvalidArgumentException('Name of a payment plan cannot be empty.');
-        }
-        $this->name = $name;
-
-        $this->type = $type;
-    }
+    public function store(PaymentPlan $plan): void;
 }

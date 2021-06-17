@@ -16,20 +16,16 @@ namespace Payman\Domain\Model\PaymentPlan;
 
 use InvalidArgumentException;
 
-final class PaymentPlan
+final class PaymentPlanId
 {
-    private string $name;
+    private string $id;
 
-    private PaymentPlanType $type;
-
-    public function __construct(string $name, PaymentPlanType $type)
+    public function __construct(string $id)
     {
-        if (empty(trim($name)))
+        if (empty(trim($id)))
         {
-            throw new InvalidArgumentException('Name of a payment plan cannot be empty.');
+            throw new InvalidArgumentException('If of a payment plan cannot be empty.');
         }
-        $this->name = $name;
-
-        $this->type = $type;
+        $this->id = $id;
     }
 }

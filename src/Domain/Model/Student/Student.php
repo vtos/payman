@@ -12,24 +12,28 @@
 
 declare(strict_types=1);
 
-namespace Payman\Domain\Model\PaymentPlan;
+namespace Payman\Domain\Model\Student;
 
 use InvalidArgumentException;
+use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
 
-final class PaymentPlan
+final class Student
 {
+    private StudentId $id;
+
     private string $name;
 
-    private PaymentPlanType $type;
+    private PaymentPlanId $paymentPlanId;
 
-    public function __construct(string $name, PaymentPlanType $type)
+    public function __construct(StudentId $id, string $name, PaymentPlanId $paymentPlanId)
     {
         if (empty(trim($name)))
         {
-            throw new InvalidArgumentException('Name of a payment plan cannot be empty.');
+            throw new InvalidArgumentException('Student name cannot be empty.');
         }
         $this->name = $name;
 
-        $this->type = $type;
+        $this->id = $id;
+        $this->paymentPlanId = $paymentPlanId;
     }
 }

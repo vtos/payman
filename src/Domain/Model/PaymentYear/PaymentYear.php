@@ -12,24 +12,15 @@
 
 declare(strict_types=1);
 
-namespace Payman\Domain\Model\PaymentPlan;
+namespace Payman\Domain\Model\PaymentYear;
 
-use InvalidArgumentException;
-
-final class PaymentPlan
+final class PaymentYear
 {
     private string $name;
 
-    private PaymentPlanType $type;
+    private Cost $cost;
 
-    public function __construct(string $name, PaymentPlanType $type)
-    {
-        if (empty(trim($name)))
-        {
-            throw new InvalidArgumentException('Name of a payment plan cannot be empty.');
-        }
-        $this->name = $name;
+    private PaymentYearStatus $status;
 
-        $this->type = $type;
-    }
+    private bool $visible;
 }
