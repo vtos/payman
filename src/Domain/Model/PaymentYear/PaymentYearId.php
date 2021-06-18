@@ -14,17 +14,18 @@ declare(strict_types=1);
 
 namespace Payman\Domain\Model\PaymentYear;
 
-use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
+use InvalidArgumentException;
 
-final class PaymentYear
+final class PaymentYearId
 {
-    private string $name;
+    private string $id;
 
-    private Cost $cost;
-
-    private PaymentYearStatus $status;
-
-    private bool $visible;
-
-    private PaymentPlanId $paymentPlanId;
+    public function __construct(string $id)
+    {
+        if (empty(trim($id)))
+        {
+            throw new InvalidArgumentException('Payment year id cannot be empty.');
+        }
+        $this->id = $id;
+    }
 }

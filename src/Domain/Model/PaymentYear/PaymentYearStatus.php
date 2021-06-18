@@ -34,7 +34,7 @@ final class PaymentYearStatus
                 self::UPCOMING,
             ]
         )) {
-            throw new InvalidArgumentException('Unknown option for payment year status.');
+            throw new InvalidArgumentException("Invalid option for payment year status: $statusOption.");
         }
     }
 
