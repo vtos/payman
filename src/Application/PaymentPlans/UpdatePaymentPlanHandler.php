@@ -12,19 +12,12 @@
 
 declare(strict_types=1);
 
-namespace Payman\Domain\Model\PaymentYear;
+namespace Payman\Application\PaymentPlans;
 
-use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
-
-final class PaymentYear
+final class UpdatePaymentPlanHandler
 {
-    private string $name;
+    public function handle(UpdatePaymentPlan $command): void
+    {
 
-    private PaymentPlanId $paymentPlanId;
-
-    private Cost $cost;
-
-    private PaymentYearStatus $status;
-
-    private bool $visible;
+    }
 }

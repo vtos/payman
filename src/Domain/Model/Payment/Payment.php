@@ -27,7 +27,7 @@ final class Payment
 
     private PaymentStatus $status;
 
-    public function __construct(
+    private function __construct(
         StudentId $studentId,
         PaymentYearId $paymentYearId,
         PaymentAmount $amount,
@@ -39,7 +39,7 @@ final class Payment
         $this->status = $status;
     }
 
-    public static function create(
+    public static function createWithNoStatus(
         StudentId $studentId,
         PaymentYearId $paymentYearId,
         PaymentAmount $amount

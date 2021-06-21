@@ -26,7 +26,7 @@ final class PaymentStatus
 
     public const REJECTED = 4;
 
-    public function __construct(int $statusOption)
+    private function __construct(int $statusOption)
     {
         if (!in_array(
             $statusOption,

@@ -20,12 +20,17 @@ final class StudentId
 {
     private string $id;
 
-    public function __construct(string $id)
+    private function __construct(string $id)
     {
         if (empty(trim($id)))
         {
             throw new InvalidArgumentException('Student id cannot be empty.');
         }
         $this->id = $id;
+    }
+
+    public function fromString(string $str): self
+    {
+        return new self($str);
     }
 }

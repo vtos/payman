@@ -16,15 +16,15 @@ namespace Payman\Domain\Model\PaymentYear;
 
 use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
 
-final class PaymentYear
+interface PaymentYearRepository
 {
-    private string $name;
+    public function store(PaymentYear $paymentYear): void;
 
-    private PaymentPlanId $paymentPlanId;
-
-    private Cost $cost;
-
-    private PaymentYearStatus $status;
-
-    private bool $visible;
+    /**
+     * Enforces singularity of the payment year with a 'current' status within a payment plan.
+     *
+     * @param PaymentPlanId $paymentPlanId
+     * @return bool
+     */
+    public function currentPaymentYearExistsInPaymentPlanWithId(PaymentPlanId $paymentPlanId): bool;
 }

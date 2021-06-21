@@ -14,23 +14,7 @@ declare(strict_types=1);
 
 namespace Payman\Domain\Model\Payment;
 
-use InvalidArgumentException;
-
-final class PaymentAmount
+interface PaymentRepository
 {
-    private int $amount;
-
-    private function __construct(int $amount)
-    {
-        if ($amount <= 0)
-        {
-            throw new InvalidArgumentException('Payment amount must have a positive value.');
-        }
-        $this->amount = $amount;
-    }
-
-    public static function fromInt(int $amount): self
-    {
-        return new self($amount);
-    }
+    public function store(Payment $payment): void;
 }

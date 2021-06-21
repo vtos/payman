@@ -24,7 +24,7 @@ final class PaymentPlanType
 
     private int $typeOption;
 
-    public function __construct(int $typeOption)
+    private function __construct(int $typeOption)
     {
         if (!in_array($typeOption,
             [
@@ -40,16 +40,6 @@ final class PaymentPlanType
     public function option(): int
     {
         return $this->typeOption;
-    }
-
-    public static function locals(): self
-    {
-        return new self(self::LOCALS);
-    }
-
-    public static function foreigners(): self
-    {
-        return new self(self::FOREIGNERS);
     }
 
     public static function fromInt(int $typeOption): self

@@ -20,12 +20,17 @@ final class PaymentPlanId
 {
     private string $id;
 
-    public function __construct(string $id)
+    private function __construct(string $id)
     {
         if (empty(trim($id)))
         {
             throw new InvalidArgumentException('If of a payment plan cannot be empty.');
         }
         $this->id = $id;
+    }
+
+    public static function fromString(string $str): self
+    {
+        return new self($str);
     }
 }

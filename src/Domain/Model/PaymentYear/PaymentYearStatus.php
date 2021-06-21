@@ -24,7 +24,7 @@ final class PaymentYearStatus
 
     public const UPCOMING = 3;
 
-    public function __construct(int $statusOption)
+    private function __construct(int $statusOption)
     {
         if (!in_array(
             $statusOption,

@@ -25,8 +25,11 @@ final class Student
 
     private PaymentPlanId $paymentPlanId;
 
-    public function __construct(StudentId $id, string $name, PaymentPlanId $paymentPlanId)
-    {
+    public function __construct(
+        StudentId $id,
+        string $name,
+        PaymentPlanId $paymentPlanId
+    ) {
         if (empty(trim($name)))
         {
             throw new InvalidArgumentException('Student name cannot be empty.');

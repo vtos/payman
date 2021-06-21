@@ -12,19 +12,9 @@
 
 declare(strict_types=1);
 
-namespace Payman\Domain\Model\PaymentYear;
+namespace Payman\Application\PaymentYears;
 
-use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
-
-final class PaymentYear
+final class AddPaymentYearToPlanHandler
 {
-    private string $name;
 
-    private PaymentPlanId $paymentPlanId;
-
-    private Cost $cost;
-
-    private PaymentYearStatus $status;
-
-    private bool $visible;
 }

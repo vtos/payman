@@ -18,18 +18,24 @@ use InvalidArgumentException;
 
 final class PaymentPlan
 {
+    private PaymentPlanId $id;
+
     private string $name;
 
     private PaymentPlanType $type;
 
-    public function __construct(string $name, PaymentPlanType $type)
-    {
+    public function __construct(
+        PaymentPlanId $id,
+        string $name,
+        PaymentPlanType $type
+    ) {
         if (empty(trim($name)))
         {
             throw new InvalidArgumentException('Name of a payment plan cannot be empty.');
         }
         $this->name = $name;
 
+        $this->id = $id;
         $this->type = $type;
     }
 }

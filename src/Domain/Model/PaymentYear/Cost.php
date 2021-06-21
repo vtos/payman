@@ -20,7 +20,7 @@ final class Cost
 {
     private int $cost;
 
-    public function __construct(int $costValue)
+    private function __construct(int $costValue)
     {
         if ($costValue <= 0)
         {
