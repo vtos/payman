@@ -16,5 +16,61 @@ namespace Payman\Application\PaymentYears;
 
 final class UpdatePaymentYear
 {
+    private string $id;
 
+    private string $name;
+
+    private string $paymentPlanId;
+
+    private int $cost;
+
+    private int $status;
+
+    private bool $visible;
+
+    public function __construct(
+        string $id,
+        string $name,
+        string $paymentPlanId,
+        int $cost,
+        int $status,
+        bool $visible
+    ) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->paymentPlanId = $paymentPlanId;
+        $this->cost = $cost;
+        $this->status = $status;
+        $this->visible = $visible;
+    }
+
+    public function id(): string
+    {
+        return $this->id;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function paymentPlanId(): string
+    {
+        return $this->paymentPlanId;
+    }
+
+    public function cost(): int
+    {
+        return $this->cost;
+    }
+
+    public function status(): int
+    {
+        return $this->status;
+    }
+
+    public function visible(): bool
+    {
+        return $this->visible;
+    }
 }

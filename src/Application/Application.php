@@ -20,8 +20,8 @@ use Payman\Application\PaymentPlans\UpdatePaymentPlan;
 use Payman\Application\PaymentPlans\UpdatePaymentPlanHandler;
 use Payman\Application\PaymentYears\AddPaymentYearToPlan;
 use Payman\Application\PaymentYears\AddPaymentYearToPlanHandler;
-use Payman\Application\PaymentYears\RemovePaymentYearFromPlan;
-use Payman\Application\PaymentYears\RemovePaymentYearFromPlanHandler;
+use Payman\Application\PaymentYears\RemovePaymentYear;
+use Payman\Application\PaymentYears\RemovePaymentYearHandler;
 use Payman\Application\Students\AssignStudentToPlan;
 use Payman\Application\Students\AssignStudentToPlanHandler;
 use Payman\Application\Students\UnassignStudentFromPlan;
@@ -35,7 +35,7 @@ final class Application
 
     private AddPaymentYearToPlanHandler $addPaymentYearToPlanHandler;
 
-    private RemovePaymentYearFromPlanHandler $removePaymentYearFromPlanHandler;
+    private RemovePaymentYearHandler $removePaymentYearHandler;
 
     private AssignStudentToPlanHandler $assignStudentToPlanHandler;
 
@@ -56,9 +56,9 @@ final class Application
         $this->addPaymentYearToPlanHandler->handle($command);
     }
 
-    public function removePaymentYearFromPlan(RemovePaymentYearFromPlan $command): void
+    public function removePaymentYearFromPlan(RemovePaymentYear $command): void
     {
-        $this->removePaymentYearFromPlanHandler->handle($command);
+        $this->removePaymentYearHandler->handle($command);
     }
 
     public function assignStudentToPlan(AssignStudentToPlan $command): void

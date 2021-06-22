@@ -14,15 +14,10 @@ declare(strict_types=1);
 
 namespace Payman\Application\PaymentYears;
 
-use Payman\Domain\Model\Payment\PaymentStatus;
-use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
-use Payman\Domain\Model\PaymentYear\Cost;
-use Payman\Domain\Model\PaymentYear\PaymentYear;
 use Payman\Domain\Model\PaymentYear\PaymentYearId;
 use Payman\Domain\Model\PaymentYear\PaymentYearRepository;
-use Payman\Domain\Model\PaymentYear\PaymentYearStatus;
 
-final class UpdatePaymentYearHandler
+final class RemovePaymentYearHandler
 {
     private PaymentYearRepository $repository;
 
@@ -31,17 +26,10 @@ final class UpdatePaymentYearHandler
         $this->repository = $repository;
     }
 
-    public function handle(UpdatePaymentYear $command): void
+    public function handle(RemovePaymentYear $command): void
     {
-        $this->repository->store(
-            new PaymentYear(
-                PaymentYearId::fromString($command->id()),
-                $command->name(),
-                PaymentPlanId::fromString($command->paymentPlanId()),
-                Cost::fromInt($command->cost()),
-                PaymentYearStatus::fromInt($command->status()),
-                $command->visible()
-            )
+        $this->repository->remove(
+            PaymentYearId::fromString($command->id())
         );
     }
 }
