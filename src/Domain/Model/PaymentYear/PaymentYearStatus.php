@@ -38,18 +38,8 @@ final class PaymentYearStatus
         }
     }
 
-    public static function current(): self
+    public static function fromInt(int $statusOption): self
     {
-        return new self(self::CURRENT);
-    }
-
-    public static function past(): self
-    {
-        return new self(self::PAST);
-    }
-
-    public static function upcoming(): self
-    {
-        return new self(self::UPCOMING);
+        return new self($statusOption);
     }
 }

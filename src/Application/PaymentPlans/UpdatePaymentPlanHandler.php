@@ -14,10 +14,28 @@ declare(strict_types=1);
 
 namespace Payman\Application\PaymentPlans;
 
+use Payman\Domain\Model\PaymentPlan\PaymentPlan;
+use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
+use Payman\Domain\Model\PaymentPlan\PaymentPlanRepository;
+use Payman\Domain\Model\PaymentPlan\PaymentPlanType;
+
 final class UpdatePaymentPlanHandler
 {
+    private PaymentPlanRepository $repository;
+
+    public function __construct(PaymentPlanRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function handle(UpdatePaymentPlan $command): void
     {
-
+        $this->repository->store(
+            new PaymentPlan(
+                PaymentPlanId::fromString($command->id()),
+                $command->name(),
+                PaymentPlanType::fromInt($command->type())
+            )
+        );
     }
 }

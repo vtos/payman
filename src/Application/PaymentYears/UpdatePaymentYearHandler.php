@@ -12,13 +12,21 @@
 
 declare(strict_types=1);
 
-namespace Payman\Domain\Model\PaymentPlan;
+namespace Payman\Application\PaymentYears;
 
-interface PaymentPlanRepository
+use Payman\Domain\Model\PaymentYear\PaymentYearRepository;
+
+final class UpdatePaymentYearHandler
 {
-    public function store(PaymentPlan $plan): void;
+    private PaymentYearRepository $repository;
 
-    public function remove(PaymentPlanId $id): void;
+    public function __construct(PaymentYearRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
-    public function nextIdentity(): string;
+    public function handle(UpdatePaymentYear $command): void
+    {
+
+    }
 }

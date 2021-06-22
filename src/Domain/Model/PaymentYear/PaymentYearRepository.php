@@ -20,6 +20,10 @@ interface PaymentYearRepository
 {
     public function store(PaymentYear $paymentYear): void;
 
+    public function remove(PaymentYearId $id): void;
+
+    public function nextIdentity(): string;
+
     /**
      * Enforces singularity of the payment year with a 'current' status within a payment plan.
      *

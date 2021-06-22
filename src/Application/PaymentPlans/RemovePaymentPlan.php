@@ -12,13 +12,19 @@
 
 declare(strict_types=1);
 
-namespace Payman\Domain\Model\PaymentPlan;
+namespace Payman\Application\PaymentPlans;
 
-interface PaymentPlanRepository
+final class RemovePaymentPlan
 {
-    public function store(PaymentPlan $plan): void;
+    private string $id;
 
-    public function remove(PaymentPlanId $id): void;
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
 
-    public function nextIdentity(): string;
+    public function id(): string
+    {
+        return $this->id;
+    }
 }

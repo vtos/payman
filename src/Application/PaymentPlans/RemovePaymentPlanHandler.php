@@ -14,12 +14,10 @@ declare(strict_types=1);
 
 namespace Payman\Application\PaymentPlans;
 
-use Payman\Domain\Model\PaymentPlan\PaymentPlan;
 use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
 use Payman\Domain\Model\PaymentPlan\PaymentPlanRepository;
-use Payman\Domain\Model\PaymentPlan\PaymentPlanType;
 
-final class CreatePaymentPlanHandler
+final class RemovePaymentPlanHandler
 {
     private PaymentPlanRepository $repository;
 
@@ -28,16 +26,10 @@ final class CreatePaymentPlanHandler
         $this->repository = $repository;
     }
 
-    public function handle(CreatePaymentPlan $command): void
+    public function handle(RemovePaymentPlan $command): void
     {
-        $id = $this->repository->nextIdentity();
-
-        $this->repository->store(
-            new PaymentPlan(
-                PaymentPlanId::fromString($id),
-                $command->name(),
-                PaymentPlanType::fromInt($command->type())
-            )
+        $this->repository->remove(
+            PaymentPlanId::fromString($command->id())
         );
     }
 }

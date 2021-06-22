@@ -14,10 +14,35 @@ declare(strict_types=1);
 
 namespace Payman\Application\PaymentYears;
 
+use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
+use Payman\Domain\Model\PaymentYear\Cost;
+use Payman\Domain\Model\PaymentYear\PaymentYear;
+use Payman\Domain\Model\PaymentYear\PaymentYearId;
+use Payman\Domain\Model\PaymentYear\PaymentYearRepository;
+use Payman\Domain\Model\PaymentYear\PaymentYearStatus;
+
 final class AddPaymentYearToPlanHandler
 {
+    private PaymentYearRepository $repository;
+
+    public function __construct(PaymentYearRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function handle(AddPaymentYearToPlan $command): void
     {
+        $id = $this->repository->nextIdentity();
 
+        $this->repository->store(
+            new PaymentYear(
+                PaymentYearId::fromString($id),
+                $command->name(),
+                PaymentPlanId::fromString($command->paymentPlanId()),
+                Cost::fromInt($command->cost()),
+                PaymentYearStatus::fromInt($command->status()),
+                $command->visible()
+            )
+        );
     }
 }
