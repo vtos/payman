@@ -18,6 +18,14 @@ use Payman\Application\PaymentPlans\CreatePaymentPlan;
 use Payman\Application\PaymentPlans\CreatePaymentPlanHandler;
 use Payman\Application\PaymentPlans\UpdatePaymentPlan;
 use Payman\Application\PaymentPlans\UpdatePaymentPlanHandler;
+use Payman\Application\PaymentYears\AddPaymentYearToPlan;
+use Payman\Application\PaymentYears\AddPaymentYearToPlanHandler;
+use Payman\Application\PaymentYears\RemovePaymentYearFromPlan;
+use Payman\Application\PaymentYears\RemovePaymentYearFromPlanHandler;
+use Payman\Application\Students\AssignStudentToPlan;
+use Payman\Application\Students\AssignStudentToPlanHandler;
+use Payman\Application\Students\UnassignStudentFromPlan;
+use Payman\Application\Students\UnassignStudentFromPlanHandler;
 
 final class Application
 {
@@ -25,7 +33,13 @@ final class Application
 
     private UpdatePaymentPlanHandler $updatePaymentPlanHandler;
 
+    private AddPaymentYearToPlanHandler $addPaymentYearToPlanHandler;
 
+    private RemovePaymentYearFromPlanHandler $removePaymentYearFromPlanHandler;
+
+    private AssignStudentToPlanHandler $assignStudentToPlanHandler;
+
+    private UnassignStudentFromPlanHandler $unassignStudentFromPlanHandler;
 
     public function createPaymentPlan(CreatePaymentPlan $command): void
     {
@@ -37,23 +51,23 @@ final class Application
         $this->updatePaymentPlanHandler->handle($command);
     }
 
-    public function addPaymentYearToPlan(): void
+    public function addPaymentYearToPlan(AddPaymentYearToPlan $command): void
     {
-
+        $this->addPaymentYearToPlanHandler->handle($command);
     }
 
-    public function removePaymentYearFromPlan(): void
+    public function removePaymentYearFromPlan(RemovePaymentYearFromPlan $command): void
     {
-
+        $this->removePaymentYearFromPlanHandler->handle($command);
     }
 
-    public function assignStudentToPlan(): void
+    public function assignStudentToPlan(AssignStudentToPlan $command): void
     {
-
+        $this->assignStudentToPlanHandler->handle($command);
     }
 
-    public function unassignStudentFromPlan(): void
+    public function unassignStudentFromPlan(UnassignStudentFromPlan $command): void
     {
-
+        $this->unassignStudentFromPlanHandler->handle($command);
     }
 }

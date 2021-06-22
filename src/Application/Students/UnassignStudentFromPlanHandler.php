@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace Payman\Application\PaymentYears;
+namespace Payman\Application\Students;
 
-final class AddPaymentYearToPlanHandler
+final class UnassignStudentFromPlanHandler
 {
-    public function handle(AddPaymentYearToPlan $command): void
+    public function handle(UnassignStudentFromPlan $command): void
     {
 
     }

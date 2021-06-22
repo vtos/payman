@@ -14,10 +14,7 @@ declare(strict_types=1);
 
 namespace Payman\Application\PaymentYears;
 
-final class AddPaymentYearToPlanHandler
+final class RemovePaymentYearFromPlan
 {
-    public function handle(AddPaymentYearToPlan $command): void
-    {
 
-    }
 }
