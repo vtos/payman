@@ -16,5 +16,34 @@ namespace Payman\Application\Students;
 
 final class AssignStudentToPlan
 {
+    private string $studentId;
 
+    private string $studentName;
+
+    private string $paymentPlanId;
+
+    public function __construct(
+        string $studentId,
+        string $studentName,
+        string $paymentPlanId
+    ) {
+        $this->studentId = $studentId;
+        $this->studentName = $studentName;
+        $this->paymentPlanId = $paymentPlanId;
+    }
+
+    public function studentId(): string
+    {
+        return $this->studentId;
+    }
+
+    public function studentName(): string
+    {
+        return $this->studentName;
+    }
+
+    public function paymentPlanId(): string
+    {
+        return $this->paymentPlanId;
+    }
 }

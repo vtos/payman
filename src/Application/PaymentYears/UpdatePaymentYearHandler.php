@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Payman\Application\PaymentYears;
 
-use Payman\Domain\Model\Payment\PaymentStatus;
 use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
 use Payman\Domain\Model\PaymentYear\Cost;
 use Payman\Domain\Model\PaymentYear\PaymentYear;

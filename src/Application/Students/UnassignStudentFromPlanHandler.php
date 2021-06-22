@@ -14,10 +14,22 @@ declare(strict_types=1);
 
 namespace Payman\Application\Students;
 
+use Payman\Domain\Model\Student\StudentId;
+use Payman\Domain\Model\Student\StudentRepository;
+
 final class UnassignStudentFromPlanHandler
 {
+    private StudentRepository $repository;
+
+    public function __construct(StudentRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function handle(UnassignStudentFromPlan $command): void
     {
-
+        $this->repository->remove(
+            StudentId::fromString($command->studentId())
+        );
     }
 }

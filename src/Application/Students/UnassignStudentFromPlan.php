@@ -16,5 +16,15 @@ namespace Payman\Application\Students;
 
 final class UnassignStudentFromPlan
 {
+    private string $studentId;
 
+    public function __construct(string $studentId)
+    {
+        $this->studentId = $studentId;
+    }
+
+    public function studentId(): string
+    {
+        return $this->studentId;
+    }
 }

@@ -14,10 +14,28 @@ declare(strict_types=1);
 
 namespace Payman\Application\Students;
 
+use Payman\Domain\Model\PaymentPlan\PaymentPlanId;
+use Payman\Domain\Model\Student\Student;
+use Payman\Domain\Model\Student\StudentId;
+use Payman\Domain\Model\Student\StudentRepository;
+
 final class AssignStudentToPlanHandler
 {
+    private StudentRepository $repository;
+
+    public function __construct(StudentRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function handle(AssignStudentToPlan $command): void
     {
-
+        $this->repository->store(
+            new Student(
+                StudentId::fromString($command->studentId()),
+                $command->studentName(),
+                PaymentPlanId::fromString($command->paymentPlanId())
+            )
+        );
     }
 }

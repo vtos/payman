@@ -14,23 +14,9 @@ declare(strict_types=1);
 
 namespace Payman\Domain\Model\Student;
 
-use InvalidArgumentException;
-
-final class StudentId
+interface StudentRepository
 {
-    private string $id;
+    public function store(Student $student): void;
 
-    private function __construct(string $id)
-    {
-        if (empty(trim($id)))
-        {
-            throw new InvalidArgumentException('Student id cannot be empty.');
-        }
-        $this->id = $id;
-    }
-
-    public static function fromString(string $str): self
-    {
-        return new self($str);
-    }
+    public function remove(StudentId $id): void;
 }
