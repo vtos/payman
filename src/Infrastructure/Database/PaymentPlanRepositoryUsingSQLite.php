@@ -78,7 +78,15 @@ final class PaymentPlanRepositoryUsingSQLite implements PaymentPlanRepository
 
     public function remove(PaymentPlanId $id): void
     {
-        // TODO: Implement remove() method.
+        $statement = $this->pdo->prepare('
+            DELETE FROM payment_plans
+            WHERE id = ?
+        ');
+        $statement->execute(
+            [
+                $id->asString()
+            ]
+        );
     }
 
     public function nextIdentity(): PaymentPlanId

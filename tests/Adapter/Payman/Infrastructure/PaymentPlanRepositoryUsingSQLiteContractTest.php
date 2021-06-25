@@ -60,7 +60,7 @@ final class PaymentPlanRepositoryUsingSQLiteContractTest extends TestCase
     /**
      * @test
      */
-    public function payment_plan_instance_can_be_stored(): void
+    public function payment_plan_instance_can_be_stored_and_removed(): void
     {
         $repository = $this->serviceContainer()->PaymentPlanRepository();
         $id = $repository->nextIdentity();
@@ -83,6 +83,11 @@ final class PaymentPlanRepositoryUsingSQLiteContractTest extends TestCase
         $repository->store($paymentPlan);
 
         $this->assertStored($paymentPlan, $id);
+
+        // Then remove it.
+        $repository->remove($id);
+
+        $this->assertRemoved($id);
     }
 
     private function assertStored(PaymentPlan $expected, PaymentPlanId $id): void
@@ -113,6 +118,25 @@ final class PaymentPlanRepositoryUsingSQLiteContractTest extends TestCase
                 )
             )
         );
+    }
+
+    private function assertRemoved(PaymentPlanId $id): void
+    {
+        $pdo = $this->serviceContainer()->PDO();
+
+        $statement = $pdo->prepare('
+            SELECT COUNT(*)
+            FROM payment_plans
+            WHERE id = ?
+        ');
+        $statement->execute(
+            [
+                $id->asString()
+            ]
+        );
+        $recordsFound = (int)$statement->fetchColumn();
+
+        $this->assertEquals(0, $recordsFound);
     }
 
     private function serviceContainer(): DrivenAdapterTestServiceContainer
