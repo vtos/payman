@@ -24,9 +24,14 @@ final class PaymentPlanId
     {
         if (empty(trim($id)))
         {
-            throw new InvalidArgumentException('If of a payment plan cannot be empty.');
+            throw new InvalidArgumentException('Id of a payment plan cannot be empty.');
         }
         $this->id = $id;
+    }
+
+    public function asString(): string
+    {
+        return $this->id;
     }
 
     public static function fromString(string $str): self

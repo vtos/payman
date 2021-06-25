@@ -24,6 +24,11 @@ final class PaymentPlan
 
     private PaymentPlanType $type;
 
+    /**
+     * @param PaymentPlanId $id
+     * @param string $name
+     * @param PaymentPlanType $type
+     */
     public function __construct(
         PaymentPlanId $id,
         string $name,
@@ -37,5 +42,19 @@ final class PaymentPlan
 
         $this->id = $id;
         $this->type = $type;
+    }
+
+    /**
+     * Casts a class object to an array.
+     *
+     * @return array Each key corresponds to a property name.
+     */
+    public function asArray(): array
+    {
+        return [
+            'id' => $this->id->asString(),
+            'name' => $this->name,
+            'type' => $this->type->option(),
+        ];
     }
 }
